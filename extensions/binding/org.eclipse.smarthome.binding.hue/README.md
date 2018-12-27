@@ -194,13 +194,13 @@ Dimmer	Light2_Dimmer		{ channel="hue:0220:1:bulb2:brightness" }
 Dimmer	Light2_ColorTemp	{ channel="hue:0220:1:bulb2:color_temperature" }
 
 // Light Level Sensor
-Number:Illuminance LightLevelSensorIlluminance { channel="hue:0106:light-level-sensor:illuminance" }
+Number:Illuminance LightLevelSensorIlluminance { channel="hue:0106:1:light-level-sensor:illuminance" }
 
 // Motion Sensor
-Switch   MotionSensorPresence     { channel="hue:0107:motion-sensor:presence" }
-DateTime MotionSensorLastUpdate   { channel="hue:0107:motion-sensor:last_updated" }
-Number   MotionSensorBatteryLevel { channel="hue:0107:motion-sensor:battery_level" }
-Switch   MotionSensorLowBattery   { channel="hue:0107:motion-sensor:battery_low" }
+Switch   MotionSensorPresence     { channel="hue:0107:1:motion-sensor:presence" }
+DateTime MotionSensorLastUpdate   { channel="hue:0107:1:motion-sensor:last_updated" }
+Number   MotionSensorBatteryLevel { channel="hue:0107:1:motion-sensor:battery_level" }
+Switch   MotionSensorLowBattery   { channel="hue:0107:1:motion-sensor:battery_low" }
 
 // Temperature Sensor
 Number:Temperature TemperatureSensorTemperature { channel="hue:0302:temperature-sensor:temperature" }
@@ -241,8 +241,8 @@ sitemap demo label="Main Menu"
  ```php
 rule "example trigger rule"
 when
-    Channel "hue:0820:dimmer-switch:dimmer_switch_event" triggered <EVENT>
+    Channel "hue:0820:1:dimmer-switch:dimmer_switch_event" triggered
 then
-    ...
+    logInfo("Test", "Dimmer switch event " + receivedEvent + " was triggered")
 end
 ```
